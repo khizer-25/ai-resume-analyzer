@@ -12,7 +12,7 @@ If this is NOT a resume (e.g., invoice, receipt, contract, article, manual, etc.
 
 If this IS a resume, analyze it thoroughly and provide comprehensive feedback in this JSON format:
 {
-  "overallScore": "X/10",
+  "overallScore": "X/100",
   "strengths": [
     "strength 1", 
     "strength 2", 
@@ -53,7 +53,7 @@ If this IS a resume, analyze it thoroughly and provide comprehensive feedback in
   ]
 }
 
-For performanceMetrics, rate each area 1-10 based on:
+For performanceMetrics, rate each area 1-100 based on:
 
 - formatting: Layout, structure, visual appeal, consistency, readability. Look for clean sections, proper spacing, consistent fonts, professional appearance
 - contentQuality: Relevance, achievements, impact, clarity, completeness. Assess if content is relevant to target roles, achievements are well-described, and information is complete
@@ -85,7 +85,7 @@ export const METRIC_CONFIG = [
   {
     key: "formatting",
     label: "Formatting",
-    defaultValue: 7,
+    defaultValue: 70,
     colorClass: "from-emerald-400 to-emerald-500",
     shadowClass: "group-hover/item:shadow-emerald-500/30",
     icon: "🎨",
@@ -93,7 +93,7 @@ export const METRIC_CONFIG = [
   {
     key: "contentQuality",
     label: "Content Quality",
-    defaultValue: 6,
+    defaultValue: 60,
     colorClass: "from-blue-400 to-blue-500",
     shadowClass: "group-hover/item:shadow-blue-500/30",
     icon: "📝",
@@ -101,7 +101,7 @@ export const METRIC_CONFIG = [
   {
     key: "atsCompatibility",
     label: "ATS Compatibility",
-    defaultValue: 6,
+    defaultValue: 60,
     colorClass: "from-violet-400 to-violet-500",
     shadowClass: "group-hover/item:shadow-violet-500/30",
     icon: "🤖",
@@ -109,7 +109,7 @@ export const METRIC_CONFIG = [
   {
     key: "keywordUsage",
     label: "Keyword Usage",
-    defaultValue: 5,
+    defaultValue: 50,
     colorClass: "from-purple-400 to-purple-500",
     shadowClass: "group-hover/item:shadow-purple-500/30",
     icon: "🔍",
@@ -117,7 +117,7 @@ export const METRIC_CONFIG = [
   {
     key: "quantifiableAchievements",
     label: "Quantified Results",
-    defaultValue: 4,
+    defaultValue: 40,
     colorClass: "from-orange-400 to-orange-500",
     shadowClass: "group-hover/item:shadow-orange-500/30",
     icon: "📊",
