@@ -3,9 +3,8 @@ import constants,{
   buildPresenceChecklist,
   METRIC_CONFIG,
 } from "../constants.js";
-import * as pdfjslib from "pdfjs-dist";
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.min?url";
-pdfjslib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+
+import pdfToText from "react-pdftotext";
 
 function App() {
 const [aiReady, setAiReady] = useState(false);
@@ -26,24 +25,13 @@ useEffect(() => {
   return () => clearInterval(interval);
 }, []);
   
-
 const extractPDFText = async (file) => {
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjslib.getDocument({ data:
-    arrayBuffer }).promise;
-
-    const texts = await Promise.all(
-      Array.from({ length: pdf.numPages }, (_,i) => pdf.
-      getPage(i + 1).then(
-        (page) => 
-          page
-            .getTextContent()
-            .then((tc) => tc.items.map((item) => item.str).join(" "))
-      )
-    )
-    );
-    return texts.join("\n").trim();
-
+  try {
+    const text = await pdfToText(file);
+    return text.replace(/\s+/g, " ").trim();
+  } catch (error) {
+    throw new Error("Failed to extract PDF text");
+  }
 };
 
 const parseJSONResponse = (reply) => {
