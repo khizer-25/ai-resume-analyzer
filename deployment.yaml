@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume-analyzer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: resume-analyzer
+  template:
+    metadata:
+      labels:
+        app: resume-analyzer
+    spec:
+      containers:
+      - name: resume-analyzer
+        image: 652820460073.dkr.ecr.ap-south-1.amazonaws.com/ai-resume-analyzer:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
